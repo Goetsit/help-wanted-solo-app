@@ -4,7 +4,7 @@ var encryptLib = require('../modules/encryption');
 var pool = require('../modules/pool.js');
 
 passport.serializeUser(function(user, done) {
-    done(null, user.id);
+    done(null, user.userid);
 });
 
 passport.deserializeUser(function(id, done) {
