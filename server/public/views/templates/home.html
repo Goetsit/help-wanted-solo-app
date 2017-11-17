@@ -1,5 +1,6 @@
+<div ng-include="'views/partials/nav.html'"></div>
 <div class="container">
-  <h1 class="lead">Login</h1>
+  <h3 class="lead">Login</h3>
     <h1 class="lead alert alert-danger" role="alert" ng-if="lc.message != ''">{{lc.message}}</h2>
     <form ng-submit="lc.login()">
       <div>
@@ -15,4 +16,36 @@
           <a href="#register">Register</a>
       </div>
     </form>
+    <div id="landing">
+        <h2>Welcome</h2>
+        <div id="aboutApp">
+
+            <h3>How To Use This Application</h3>
+            <p>This application is meant for those in need and are looking to utilize local resources.</p>
+            <p>The resources include healthcare:</p>
+            <ul>
+                <li>Women's Health</li><br>
+                <li>Mental Healthcare</li>
+            </ul>
+            <p>As well as:</p>
+                <ul>
+                    <li>Other Services</li>
+                </ul>
+            <p>To search and find resources please either select one of the resource groups</p>
+            <p>or select from the above navigation bar</p>
+            
+        </div>
+        <div id="mission">
+            <h3>About The Creator And Mission Statement</h3>
+            <p>This application was inspired by Krista J Van Eps and developed by Laura A Goetz.</p>
+            <p>Krista is a hard-working student at Metro State University and is currently studying Social Work.</p>
+            <p>She expressed concern because of the lack of available way to find resources for people that are in need of them.</p>
+            <p>Which is where I come in, I took Krista's concerns and created a tool for users </p>
+                <p>to be able to find local resources available to them.</p>
+            <p>The mission for this application is to provide users with an easy and unbiased way </p>
+            <p>to locate, contact and learn more about their options.</p>
+
+        </div>
+
+    </div>
 </div>

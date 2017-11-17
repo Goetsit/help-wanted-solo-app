@@ -11,7 +11,7 @@ body, html {
 }
 
 .instructions {
-  background-color: #333333;
+  background: linear-gradient(10deg, #1C3738 55%,#8BAAAD); 
   color: #DDDDDD;
   padding: 15px;
 }
@@ -22,6 +22,22 @@ body, html {
 
 #container {
   margin-top: 10px;
+}
+
+#aboutApp {
+margin: 10px;
+margin-right: 0px;
+background-color: lightblue;
+width: 475px;
+float: left;
+}
+
+#mission {
+  margin: 10px;
+  margin-left: 0px;
+  background-color: lightgreen;
+  width: auto;
+  float: right;
 }
 
 .container p{
