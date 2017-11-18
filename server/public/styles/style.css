@@ -94,3 +94,7 @@ li a:hover {
   text-decoration: underline;
   color: #eee;
 }
+
+.md-toolbar-tools{
+  background: linear-gradient(10deg, #1C3738 55%,#8BAAAD); 
+}

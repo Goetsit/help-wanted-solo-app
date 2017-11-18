@@ -1,4 +1,12 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container">
-  
+    <div class="resourceDiv">
+        <strong id="name">Resource Name</strong>
+        <br>
+        <p id="descSpan">Description of the resource. Resource for things that do things for people with things. Things involving
+            things and more things and stuff</p>
+        <div layout="row" layout-wrap layout-margin layout-align="end">
+            <md-button class="md-primary md-raised" id="btn" ng-click="info.resourceAlert($event)">Details</md-button>
+        </div>
+
 </div>
