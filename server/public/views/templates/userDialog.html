@@ -1,0 +1,32 @@
+<md-dialog aria-label="Help Wanted">
+        <div ng-controller="UserController as uc" >
+          <form ng-cloak>
+            <md-toolbar>
+              <div class="md-toolbar-tools">
+               
+              </div>
+            </md-toolbar>
+      
+            <md-dialog-content>
+              <div class="md-dialog-content">
+                <div class = "resourceDialog" ng-repeat="user in uc.userInfo" >
+                <br>
+                <h3>Your User Info</h3>
+                <strong>Your username: </strong> {{user.username}} <br>
+                <strong>User Since: </strong>{{user.datecreated}} <br>
+                <strong>Your location state: </strong>{{user.statename}} <br>
+                <strong>Your  current bookmark count: </strong>{{user.count}}
+               
+              </div>
+            </div>
+            </md-dialog-content>
+      
+            <md-dialog-actions layout="row">
+            
+              <span flex></span>
+      
+            </md-dialog-actions>
+          </form>
+        </div>
+       
+      </md-dialog>  

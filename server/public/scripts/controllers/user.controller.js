@@ -1,9 +1,10 @@
-myApp.controller('UserController', function($http,UserService) {
+myApp.controller('UserController', function($http,UserService, $mdDialog) {
   console.log('UserController created');
   var vm = this;
   vm.userService = UserService;
   vm.userObject = UserService.userObject;
   vm.bookmarked = [];
+  vm.userInfo= [];
 
 
    
@@ -31,5 +32,30 @@ vm.removeBookmarked = function(index){
   }); 
 
 }
+
+vm.getUserInfo = function(user){
+  $http.get('/user/userinfo').then(function (response) {
+    console.log('Success!');
+    vm.userInfo = response.data;
+    console.log(vm.userInfo,'userinfo');
+}).catch(function (error) {
+    console.log('Failure!', error);
+});
+}
+
+vm.getUserInfo();
+
+
+vm.userAlert = function(ev) {
+  console.log('dialog box');
+  $mdDialog.show({
+    controller: 'UserController',
+    templateUrl: 'views/templates/userDialog.html',
+    parent: angular.element(document.body),
+    targetEvent: ev,
+    clickOutsideToClose:true
+  })
+}
+
 
 });

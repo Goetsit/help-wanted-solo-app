@@ -77,6 +77,29 @@ router.delete('/bookmark/:id', function (req, res) {
 });
 
 
+router.get('/userinfo', function (req, res) {
+  var user = req.user.userid;
+  console.log('UUUSUEEERRR', user)
+  pool.connect(function (errorConnectingToDB, db, done) {
+    if (errorConnectingToDB) {
+      console.log('Error connecting to db', errorConnectingToDB);
+      res.sendStatus(500);
+    } else {
+      var queryText = 'SELECT u."username",u."datecreated",ls."statename",COUNT(ub."resourceid") FROM public."usermaster" u INNER JOIN public."locationstate" ls ON ls."stateid" = u."stateid" LEFT JOIN public."userbookmarked" ub ON ub."userid" = u."userid" WHERE u."userid" = $1 GROUP BY u."username", ls."statename", u."datecreated"' ;
+      db.query(queryText, [user], function (errorMakingQuery, result) {
+        done();
+        if (errorMakingQuery) {
+          console.log('Error making query', errorMakingQuery, result)
+          res.sendStatus(500);
+        } else {
+          res.send(result.rows);
+        }
+      });
+    }
+  });
+});
+
+
 
 // clear all server session information about this user
 router.get('/logout', function(req, res) {
