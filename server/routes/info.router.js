@@ -33,7 +33,7 @@ router.get('/', function (req, res) {
   });
 });
 
-
+/*
 router.get('/:id', function (req, res) {
   var resourceid = req.params.id;
   console.log('RESOURCE ID MAYBE', resourceid)
@@ -55,7 +55,7 @@ router.get('/:id', function (req, res) {
       });
     }
   });
-});
+});*/
 
 router.post('/bookmark', function (req, res) {
   var bookmark = req.body.resourceid;

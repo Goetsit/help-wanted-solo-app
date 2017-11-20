@@ -41,6 +41,11 @@ vm.recommend = function(index){
   })
 }
 
+vm.searchResources = function(text){
+  console.log(text);
+  console.log('search');
+}
+
 /*
   
   vm.resourceAlert = function(ev) {

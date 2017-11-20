@@ -157,3 +157,6 @@ img {
   background: linear-gradient(10deg, #8BAAAD 55%,#F4FFF8)
 }
 
+.searchBar{
+  margin-left: 5px;
+}
