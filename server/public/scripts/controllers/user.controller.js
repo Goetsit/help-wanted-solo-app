@@ -19,26 +19,15 @@ myApp.controller('UserController', function($http,UserService) {
 
 vm.getBookmarked();
 
-/*
-
-vm.bookmark = function(index){
-  console.log(vm.resources[index].resourceid,'on bookmark, resourceid');
-  $http.post('/info/bookmark',vm.resources[index]).then(function(response){
-    console.log('success!');
-  }).catch(function(error){
-    console.log('failure');
-  })
-}
-*/
-
 
 vm.removeBookmarked = function(index){
   console.log(vm.bookmarked[index].resourceid,'on remove bookmark');
-  $http.delete('/user/bookmark/delete').then(function (response) {
-      console.log('Success!');
-      vm.bookmarked = response.data;
+  var id = vm.bookmarked[index].resourceid
+  $http.delete('/user/bookmark/'+ id).then(function (response) {
+      console.log('Successfully deleted');
+      vm.getBookmarked();
   }).catch(function (error) {
-      console.log('Failure!', error);
+      console.log('Failure on delete', error);
   }); 
 
 }

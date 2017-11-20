@@ -52,6 +52,32 @@ router.get('/bookmark', function (req, res) {
   });
 });
 
+
+router.delete('/bookmark/:id', function (req, res) {
+  var resourceid = req.params.id;
+  var bookmark = req.body.resourceid;
+  var user = req.user.userid;
+  pool.connect(function (errorConnectingToDB, db, done) {
+    if (errorConnectingToDB) {
+      console.log('Error connecting to db', errorConnectingToDB);
+      res.sendStatus(500);
+    } else {
+      var queryText = 'DELETE FROM public."userbookmarked" WHERE "resourceid" = $1;';
+      db.query(queryText, [resourceid], function (errorMakingQuery, result) {
+        done();
+        if (errorMakingQuery) {
+          console.log('Error making query', errorMakingQuery, result)
+          res.sendStatus(500);
+        } else {
+          res.send(result.rows);
+        }
+      });
+    }
+  });
+});
+
+
+
 // clear all server session information about this user
 router.get('/logout', function(req, res) {
   // Use passport's built-in method to log out the user
