@@ -33,13 +33,14 @@ router.get('/', function(req, res) {
 	
 
 router.get('/bookmark', function (req, res) {
+  var user = req.user.userid;
   pool.connect(function (errorConnectingToDB, db, done) {
     if (errorConnectingToDB) {
       console.log('Error connecting to db', errorConnectingToDB);
       res.sendStatus(500);
     } else {
-      var queryText = 'SELECT r.*,h.* FROM public."userbookmarked" eb INNER JOIN public.resources r ON r.resourceid = eb.resourceid LEFT JOIN public.hoursofoperation h ON h.resourceid = r.resourceid' ;
-      db.query(queryText, function (errorMakingQuery, result) {
+      var queryText = 'SELECT r.*,h.* FROM public."userbookmarked" eb INNER JOIN public.resources r ON r.resourceid = eb.resourceid LEFT JOIN public.hoursofoperation h ON h.resourceid = r.resourceid WHERE eb."userid" = $1' ;
+      db.query(queryText, [user], function (errorMakingQuery, result) {
         done();
         if (errorMakingQuery) {
           console.log('Error making query', errorMakingQuery, result)
