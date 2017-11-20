@@ -1,37 +1,38 @@
 <md-dialog aria-label="Help Wanted">
-  <div ng-controller="InfoController as info" >
+  <!-- <div ng-controller="InfoController as info" > -->
     <form ng-cloak>
       <md-toolbar>
         <div class="md-toolbar-tools">
-         
+         {{info.resource}}
         </div>
       </md-toolbar>
 
       <md-dialog-content>
         <div class="md-dialog-content">
-          <div class = "resourceDialog" ng-repeat="resources in info.resources" >
+          <div class = "resourceDialog" ng-repeat="resource in info.resource track by $index" >
           <br>
-          <h3>{{resources.resourcename}}</h3> 
-          {{resources.streetaddress}}, {{resources.city}} {{resources.state}}, {{resources.zip}}
+          {{resource}}
+          <h3>{{resource.resourcename}}</h3> 
+          {{resource.streetaddress}}, {{resource.city}} {{resource.state}}, {{resource.zip}}
         
           <p>
             <strong>Contact:</strong>
             <ul>
-              <li>Phone: {{resources.phone}}</li><br>
-              <li>Website: {{resources.website}}</li>
+              <li>Phone: {{resource.phone}}</li><br>
+              <li>Website: {{resource.website}}</li>
             </ul>
            <p><strong>Hours of Operation:</strong></p>
             <ul>
-              <li>Monday: {{resources.mondayhours}}</li><br>
-              <li>Tuesday: {{resources.tuesdayhours}}</li><br>
-              <li>Wednesday: {{resources.wednesdayhours}}</li><br>
-              <li>Thursday: {{resources.thursdayhours}}</li><br>
-              <li>Friday: {{resources.fridayhours}}</li><br>
-              <li>Saturday: {{resources.saturdayhours}}</li><br>
-              <li>Sunday: {{resources.sundayhours}}</li><br>
+              <li>Monday: {{resource.mondayhours}}</li><br>
+              <li>Tuesday: {{resource.tuesdayhours}}</li><br>
+              <li>Wednesday: {{resource.wednesdayhours}}</li><br>
+              <li>Thursday: {{resource.thursdayhours}}</li><br>
+              <li>Friday: {{resource.fridayhours}}</li><br>
+              <li>Saturday: {{resource.saturdayhours}}</li><br>
+              <li>Sunday: {{resource.sundayhours}}</li><br>
             </ul>
             <p><strong>Description:</strong></p>
-            <p>{{resources.description}}</p>
+            <p>{{resource.description}}</p>
           <h2>Add a new comment:</h2>
           <textarea rows="4" cols="50" ng-model="info.comment"> </textarea>
           <md-button ng-click="info.addComment(info.comment)">Add comment</md-button>
@@ -50,6 +51,6 @@
 
       </md-dialog-actions>
     </form>
-  </div>
+  <!-- </div> -->
  
 </md-dialog>  

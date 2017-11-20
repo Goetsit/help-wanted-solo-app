@@ -1,0 +1,19 @@
+<div ng-include="'views/partials/nav.html'"></div>
+<div ng-include="'views/templates/info.html'"></div>
+<div class="infoContainer">
+    <div class="resourceDiv">
+            {{dc.resource}}
+        <strong id="name"><h2>{{resources.resourcename}}</h2></strong>
+        {{resources.streetaddress}}, {{resources.city}} {{resources.state}}, {{resources.zip}}
+        <br>
+        <md-button class="bookmarkBtn" ng-click="info.bookmark($index)">
+            <i class="material-icons">bookmark_border</i>Bookmark Me!</md-button>
+        <p class="resourceDesc">{{resources.description}}<br>
+      
+        </p>
+        <img src={{resources.imageurl}} alt="">
+        <div layout="row" layout-wrap layout-margin layout-align="end">
+            <md-button class=" md-raised" class="detailsBtn" ng-click="dc.getSingleResource($event,info.resources[$index])">Details</md-button>
+        </div>
+
+</div>

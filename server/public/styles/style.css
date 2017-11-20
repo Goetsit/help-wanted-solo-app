@@ -107,7 +107,8 @@ li a:hover {
   background-color: #F4FFF8;
   border: solid;
   margin: 5px;
-  padding: 5px;
+  padding: 10px;
+ 
   
 }
 
@@ -121,7 +122,7 @@ img {
 }
 
 .resourceDesc{
-  text-align: center;
+  
 }
 
 #logout{

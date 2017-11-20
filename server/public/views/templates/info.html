@@ -1,17 +1,35 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="infoContainer">
     <div class="resourceDiv" ng-repeat = "resources in info.resources track by $index">
-        <strong id="name"><h2>{{resources.resourcename}}</h2></strong>
-        {{resources.streetaddress}}, {{resources.city}} {{resources.state}}, {{resources.zip}}
+            
+        <strong id="name"><h2>{{resources.resourcename}}</h2></strong> <img src={{resources.imageurl}} alt="">
+       
+       
         <br>
         <md-button class="bookmarkBtn" ng-click="info.bookmark($index)">
             <i class="material-icons">bookmark_border</i>Bookmark Me!</md-button>
-        <p class="resourceDesc">{{resources.description}}<br>
-      
-        </p>
-        <img src={{resources.imageurl}} alt="">
-        <div layout="row" layout-wrap layout-margin layout-align="end">
-            <md-button class=" md-raised" class="detailsBtn" ng-click="info.resourceAlert($event,info.resources[$index])">Details</md-button>
-        </div>
+            <md-button class="bookmarkBtn" ng-click="info.recommend($index)">   <i class="material-icons">check_circle</i>Recommend This Resource!</md-button>
+            <md-button href={{resources.website}} target="_blank" md-autofocus><i class="material-icons">reorder</i>
+                    Navigate to resource website
+                  </md-button> <br>
+                 <p> <strong>Recommendations: </strong> {{resources.recommendations}} <br></p>
+                 <strong>Address: </strong> {{resources.streetaddress}}, {{resources.city}} {{resources.state}}, {{resources.zip}}
+        <p class="resourceDesc"><strong>Description: </strong>{{resources.description}}<br> </p>
+           <p><strong>Contact:</strong></p> 
+            <ul>
+              <li>Phone: {{resources.phone}}</li><br>
+              <li>Website: {{resources.website}}</li>
+            </ul>
+            <p><strong>Hours of Operation:</strong></p>
+            <ul>
+              <li>Monday: {{resources.mondayhours}}</li><br>
+              <li>Tuesday: {{resources.tuesdayhours}}</li><br>
+              <li>Wednesday: {{resources.wednesdayhours}}</li><br>
+              <li>Thursday: {{resources.thursdayhours}}</li><br>
+              <li>Friday: {{resources.fridayhours}}</li><br>
+              <li>Saturday: {{resources.saturdayhours}}</li><br>
+              <li>Sunday: {{resources.sundayhours}}</li><br>
+       
+       
 
 </div>
