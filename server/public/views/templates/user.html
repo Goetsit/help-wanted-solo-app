@@ -1,6 +1,31 @@
 <div ng-include="'views/partials/nav.html'"></div>
-<div class="container">
+<div class="userContainer">
 
     <h1 id="welcome" class="lead">Welcome, {{uc.userObject.userName}}!</h1>
-    <button class="btn btn-default" ng-click="uc.userService.logout()">Log Out</button>
+
+    <h1>These are your bookmarked resources!</h1>
+  
+    <div class="bookmarked" ng-repeat="bookmarked in uc.bookmarked">
+            <h3>{{bookmarked.resourcename}}</h3> <md-button class ="md-raised" ng-click="uc.removeBookmarked($index)">Remove Bookmark</md-button>
+            <p><strong>Description:</strong></p>
+            <p>{{bookmarked.description}}</p>
+            
+              <p>
+                <strong>Contact:</strong>
+                <ul>
+                  <li>Phone: {{bookmarked.phone}}</li><br>
+                  <li>Website: {{bookmarked.website}}</li>
+                </ul>
+               <p><strong>Hours of Operation:</strong></p>
+                <ul>
+                  <li>Monday: {{bookmarked.mondayhours}}</li><br>
+                  <li>Tuesday: {{bookmarked.tuesdayhours}}</li><br>
+                  <li>Wednesday: {{bookmarked.wednesdayhours}}</li><br>
+                  <li>Thursday: {{bookmarked.thursdayhours}}</li><br>
+                  <li>Friday: {{bookmarked.fridayhours}}</li><br>
+                  <li>Saturday: {{bookmarked.saturdayhours}}</li><br>
+                  <li>Sunday: {{bookmarked.sundayhours}}</li><br>
+                </ul>
+                
+    </div>
 </div>

@@ -8,6 +8,7 @@ body, html {
 .instructions .container h1 {
   font-size: 32px;
   font-weight: 600;
+
 }
 
 .instructions {
@@ -27,7 +28,6 @@ body, html {
 #aboutApp {
 margin: 10px;
 margin-right: 0px;
-background-color: lightblue;
 width: 475px;
 float: left;
 }
@@ -35,7 +35,6 @@ float: left;
 #mission {
   margin: 10px;
   margin-left: 0px;
-  background-color: lightgreen;
   width: auto;
   float: right;
 }
@@ -43,6 +42,7 @@ float: left;
 .container p{
   margin-top : 14px;
 }
+
 
 .message {
   padding: 10px 0;
@@ -93,7 +93,7 @@ li a {
 md-icon{
   font-family: 'Material Icons' !important;
 }
-/* Change the link color to #111 (black) on hover */
+
 li a:hover {
   text-decoration: underline;
   color: #eee;
@@ -102,3 +102,49 @@ li a:hover {
 .md-toolbar-tools{
   background: linear-gradient(10deg, #8BAAAD 55%,#F4FFF8); 
 }
+
+.resourceDiv{
+  background-color: #F4FFF8;
+  border: solid;
+  margin: 5px;
+  padding: 5px;
+  
+}
+
+.detailsBtn{
+background-color: #1C3738;
+}
+
+img {
+  height: 200px;
+  width: 200px;
+}
+
+.resourceDesc{
+  text-align: center;
+}
+
+#logout{
+ background-color: #8BAAAD;
+}
+
+.bookmarked{
+  border: solid;
+  width: auto;
+  margin: 5px;
+  padding: 5px;
+  background-color: #F4FFF8;
+}
+
+.userContainer{
+  background: linear-gradient(10deg, #8BAAAD 55%,#F4FFF8)
+}
+
+.infoContainer{
+  background: linear-gradient(10deg, #8BAAAD 55%,#F4FFF8)
+}
+
+.homeContainer{
+  background: linear-gradient(10deg, #8BAAAD 55%,#F4FFF8)
+}
+

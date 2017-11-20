@@ -1,35 +1,36 @@
-<md-dialog aria-label="Test for solo project">
-  <div ng-controller="InfoController as info">
+<md-dialog aria-label="Help Wanted">
+  <div ng-controller="InfoController as info" >
     <form ng-cloak>
       <md-toolbar>
         <div class="md-toolbar-tools">
-          <h2>RESOURCE NAME</h2>
-          <span flex></span>
-          <md-button class="md-icon-button" ng-click="cancel()">
-          </md-button>
+         
         </div>
       </md-toolbar>
 
       <md-dialog-content>
         <div class="md-dialog-content">
-          <md-button class="bookmarkBtn" ng-click="info.bookmarkTest()">
-            <i class="material-icons">bookmark_border</i>Bookmark Me!</md-button>
+          <div class = "resourceDialog" ng-repeat="resources in info.resources" >
           <br>
-          <h3>Resource Name</h3>
+          <h3>{{resources.resourcename}}</h3> 
+        
           <p>
             <strong>Contact:</strong>
             <ul>
-              <li>Phone: 867-5309</li>
-              <li>Website: https://google.com</li>
+              <li>Phone: {{resources.phone}}</li><br>
+              <li>Website: {{resources.website}}</li>
             </ul>
-            <strong>Hours of Operation:</strong>
+           <p><strong>Hours of Operation:</strong></p>
             <ul>
-              <li>Monday: 7am-6pm</li>
-              <li>Wednesday: 7am-6pm</li>
+              <li>Monday: {{resources.mondayhours}}</li><br>
+              <li>Tuesday: {{resources.tuesdayhours}}</li><br>
+              <li>Wednesday: {{resources.wednesdayhours}}</li><br>
+              <li>Thursday: {{resources.thursdayhours}}</li><br>
+              <li>Friday: {{resources.fridayhours}}</li><br>
+              <li>Saturday: {{resources.saturdayhours}}</li><br>
+              <li>Sunday: {{resources.sundayhours}}</li><br>
             </ul>
-            <strong>Description:</strong>
-            <p>This resource is for people that do the things but maybe need some additional things in orders to do the things</p>
-          </p>
+            <p><strong>Description:</strong></p>
+            <p>{{resources.description}}</p>
           <h2>Add a new comment:</h2>
           <textarea rows="4" cols="50" ng-model="info.comment"> </textarea>
           <md-button ng-click="info.addComment(info.comment)">Add comment</md-button>
@@ -37,10 +38,11 @@
           <h4>User Comments:</h4>
           <span>{{info.newComment.comment}}</span>
         </div>
+      </div>
       </md-dialog-content>
 
       <md-dialog-actions layout="row">
-        <md-button href="http://google.com" target="_blank" md-autofocus>
+        <md-button href={{resources.website}} target="_blank" md-autofocus>
           Navigate to resource website
         </md-button>
         <span flex></span>
@@ -49,4 +51,4 @@
     </form>
   </div>
  
-</md-dialog>
+</md-dialog>  

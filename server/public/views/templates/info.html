@@ -1,12 +1,14 @@
 <div ng-include="'views/partials/nav.html'"></div>
-<div class="container">
-    <div class="resourceDiv">
-        <strong id="name">Resource Name</strong>
+<div class="infoContainer">
+    <div class="resourceDiv" ng-repeat = "resources in info.resources track by $index">
+        <strong id="name"><h2>{{resources.resourcename}}</h2></strong>
         <br>
-        <p id="descSpan">Description of the resource. Resource for things that do things for people with things. Things involving
-            things and more things and stuff</p>
+        <md-button class="bookmarkBtn" ng-click="info.bookmark($index)">
+            <i class="material-icons">bookmark_border</i>Bookmark Me!</md-button>
+        <p class="resourceDesc">{{resources.description}}</p>
+        <img src={{resources.imageurl}} alt="">
         <div layout="row" layout-wrap layout-margin layout-align="end">
-            <md-button class="md-primary md-raised" id="btn" ng-click="info.resourceAlert($event)">Details</md-button>
+            <md-button class=" md-raised" class="detailsBtn" ng-click="info.resourceAlert($event,info.resources[$index])">Details</md-button>
         </div>
 
 </div>
