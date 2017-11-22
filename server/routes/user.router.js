@@ -84,7 +84,6 @@ router.delete('/bookmark/:id', function (req, res) {
 
 router.get('/userinfo', function (req, res) {
   var user = req.user.userid;
-  console.log('UUUSUEEERRR', user)
   pool.connect(function (errorConnectingToDB, db, done) {
     if (errorConnectingToDB) {
       console.log('Error connecting to db', errorConnectingToDB);
@@ -112,6 +111,44 @@ router.get('/userinfo', function (req, res) {
   });
 });
 
+
+
+router.post('/new', function (req, res) {
+  var resourceToAddName = req.body.resourcename;
+  var resourceToAddWebsite = req.body.website;
+  var resourceToAddPhone = req.body.phone;
+  var resourceToAddDescription = req.body.description;
+  var user = req.user.userid;
+   pool.connect(function (errorConnectingToDB, db, done) {
+    if (errorConnectingToDB) {
+      console.log('Error connecting to db', errorConnectingToDB);
+      res.sendStatus(500);
+    } else {
+      var queryText = 'INSERT INTO public."resources"( ' +
+                                                      '"resourcename" ' +
+                                                      ',"resourcestateid" ' +
+                                                      ',"description" ' +
+                                                      ',"phone" ' +
+                                                      ',"website" ' +
+                                                      ',"enteredbyuserid") ' +
+                                    'VALUES ($1 ' +
+                                      ',(SELECT "stateid" FROM public."usermaster" WHERE "userid" = $5) ' +
+                                      ',$2 ' +
+                                      ',$3 '+
+                                      ',$4 ' +
+                                      ',$5);';
+      db.query(queryText, [resourceToAddName,resourceToAddDescription,resourceToAddPhone, resourceToAddWebsite, user], function (errorMakingQuery, result) {
+        done();
+        if (errorMakingQuery) {
+          console.log('Error making query', errorMakingQuery, result)
+          res.sendStatus(500);
+        } else {
+          res.send(result.rows);
+        }
+      });
+    }
+  });
+});
 
 
 // clear all server session information about this user

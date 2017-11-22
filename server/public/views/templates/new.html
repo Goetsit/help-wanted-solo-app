@@ -18,8 +18,8 @@
                  Is this resource a service? <input type="checkbox" ng-model = "uc.newR.isservice"><br>
                  Is this resource national? <input type="checkbox" ng-model = "uc.newR.isnational"><br>  -->
                    <p>Resource Description: <textarea name="description" id="" cols="30" rows="10" ng-model="uc.newR.description"></textarea></p> 
-                    <md-button type="button" ng-click="uc.newResource(uc.newR)" layout="end">Add New Resource</md-button>
-                
+                    <md-button id = "newRBtn" class = "md-raised" type="button" ng-click="uc.newResource(uc.newR)" layout="end">Add New Resource</md-button>
+                New resources will be sent for approval before being available under Resources. Thanks!
             </md-dialog-content>
       
             <md-dialog-actions layout="row">

@@ -20,6 +20,21 @@ myApp.controller('UserController', function ($http, UserService, $mdDialog) {
   vm.getBookmarked(); // call getBookmarked to actually poplaute
 
 
+
+  /* MdDialog  set up for removing bookmarks  */
+  vm.bookmarkAlertRemove = function (ev) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .parent(angular.element(document.querySelector('#popupContainer')))
+        .clickOutsideToClose(true)
+        .title('Removing Bookmark')
+        .textContent('Bookmark has been removed. Thanks!')
+        .ariaLabel('Error')
+        .ok('Ok')
+        .targetEvent(ev)
+    );
+  }; //END dialog for error
+
   /* DELETE from userbookmarked, removes book mark from user page */
 
   vm.removeBookmarked = function (index) {
@@ -27,6 +42,7 @@ myApp.controller('UserController', function ($http, UserService, $mdDialog) {
     var id = vm.bookmarked[index].resourceid
     $http.delete('/user/bookmark/' + id).then(function (response) {
       console.log('Successfully deleted');
+      vm.bookmarkAlertRemove(event);
       vm.getBookmarked();
     }).catch(function (error) {
       console.log('Failure on delete', error);
@@ -64,6 +80,11 @@ myApp.controller('UserController', function ($http, UserService, $mdDialog) {
   /* POST route for adding a new resource to resources */
   vm.newResource = function (newR) {
     console.log(newR, 'adding new resource');
+      $http.post('/user/new', newR).then(function (response) {
+       console.log('success!')
+      }).catch(function (error) {
+        console.log('failure')
+      })
     //should be able to get enteredbyuserid from req.user.userid
   }//End POST
 
