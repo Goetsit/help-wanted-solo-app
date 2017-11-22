@@ -7,7 +7,7 @@
  <md-button class="btn btn-default md-raised"  id = "logout" ng-click="uc.userService.logout()">Log Out</md-button>
  
 
-    <h1>These are your bookmarked resources!</h1>
+    <h1>Bookmarks</h1>
   
     <div class="bookmarked" ng-repeat="bookmarked in uc.bookmarked">
             <h3>{{bookmarked.resourcename}}</h3> <md-button class ="md-raised " id="removeBookmarkBtn" ng-click="uc.removeBookmarked($index)">Remove Bookmark</md-button>

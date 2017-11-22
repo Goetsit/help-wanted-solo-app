@@ -2,12 +2,11 @@
 <div class="searchBar">
     <form ng-submit="info.searchResources(info.text)">
         <input type="text" placeholder="search" ng-model="info.text">
-       <input class="md-button md-raised" type="submit" name="submit" value="Search" />
     </form>
 </div>
 
 <div class="infoContainer">
-    <div class="resourceDiv" ng-repeat="resources in info.resources track by $index">
+    <div class="resourceDiv" ng-repeat="resources in info.resources | filter: info.text">
 
         <strong id="name">
             <h2>{{resources.resourcename}}</h2>
