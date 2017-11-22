@@ -35,6 +35,22 @@ myApp.controller('UserController', function ($http, UserService, $mdDialog) {
     );
   }; //END dialog for error
 
+
+  /* MdDialog  set up for adding resources  */
+  vm.newResourceAlertAdd = function (ev) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .parent(angular.element(document.querySelector('#popupContainer')))
+        .clickOutsideToClose(true)
+        .title('Resource added!')
+        .textContent('Our admins have been notified of the addition for further approval.' +
+      'We greatly appreciate your contribution!')
+        .ariaLabel('Error')
+        .ok('Ok')
+        .targetEvent(ev)
+    );
+  }; //END dialog for error
+
   /* DELETE from userbookmarked, removes book mark from user page */
 
   vm.removeBookmarked = function (index) {
@@ -82,6 +98,7 @@ myApp.controller('UserController', function ($http, UserService, $mdDialog) {
     console.log(newR, 'adding new resource');
       $http.post('/user/new', newR).then(function (response) {
        console.log('success!')
+       vm.newResourceAlertAdd(event);
       }).catch(function (error) {
         console.log('failure')
       })

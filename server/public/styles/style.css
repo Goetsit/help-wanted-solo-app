@@ -166,3 +166,8 @@ img {
   padding: 5px;
   background-color: #8BAAAD;
 }
+
+#filterBar{
+  height: 20px;
+  width: 200px;
+}

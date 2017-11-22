@@ -13,7 +13,7 @@
                 <br>
                 <h3>Your User Info</h3>
                 <strong>Your Username: </strong> {{user.username}} <br>
-                <strong>User Since: </strong>{{user.datecreated}} <br>
+                <strong>User Since: </strong>{{user.datecreated | date:shortdate}} <br>
                 <strong>Your Location State: </strong>{{user.statename}} <br>
                 <strong>Your  Current Bookmark Count: </strong>{{user.count}}
                
