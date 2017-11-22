@@ -1,75 +1,82 @@
-myApp.controller('UserController', function($http,UserService, $mdDialog) {
+myApp.controller('UserController', function ($http, UserService, $mdDialog) {
   console.log('UserController created');
   var vm = this;
   vm.userService = UserService;
   vm.userObject = UserService.userObject;
   vm.bookmarked = [];
-  vm.userInfo= [];
+  vm.userInfo = [];
 
-   
-  vm.getBookmarked = function(){
+  /* Initial GET route to popluate user page with their bookmarks */
+  vm.getBookmarked = function () {
     $http.get('/user/bookmark').then(function (response) {
-        console.log('Success!');
-        vm.bookmarked = response.data;
+      console.log('Success!');
+      vm.bookmarked = response.data;
     }).catch(function (error) {
-        console.log('Failure!', error);
+      console.log('Failure!', error);
     });
-  
-}
 
-vm.getBookmarked();
+  } //End GET
+
+  vm.getBookmarked(); // call getBookmarked to actually poplaute
 
 
-vm.removeBookmarked = function(index){
-  console.log(vm.bookmarked[index].resourceid,'on remove bookmark');
-  var id = vm.bookmarked[index].resourceid
-  $http.delete('/user/bookmark/'+ id).then(function (response) {
+  /* DELETE from userbookmarked, removes book mark from user page */
+
+  vm.removeBookmarked = function (index) {
+    console.log(vm.bookmarked[index].resourceid, 'on remove bookmark');
+    var id = vm.bookmarked[index].resourceid
+    $http.delete('/user/bookmark/' + id).then(function (response) {
       console.log('Successfully deleted');
       vm.getBookmarked();
-  }).catch(function (error) {
+    }).catch(function (error) {
       console.log('Failure on delete', error);
-  }); 
+    });
 
-}
-
-vm.getUserInfo = function(user){
-  $http.get('/user/userinfo').then(function (response) {
-    console.log('Success!');
-    vm.userInfo = response.data;
-    console.log(vm.userInfo,'userinfo');
-}).catch(function (error) {
-    console.log('Failure!', error);
-});
-}
-
-vm.getUserInfo();
+  } //End DELETE
 
 
-vm.userAlert = function(ev) {
-  console.log('dialog box');
-  $mdDialog.show({
-    controller: 'UserController',
-    templateUrl: 'views/templates/userDialog.html',
-    parent: angular.element(document.body),
-    targetEvent: ev,
-    clickOutsideToClose:true
-  })
-}
+  /* Populate User Info for user info dialog box, GET*/
+  vm.getUserInfo = function (user) {
+    $http.get('/user/userinfo').then(function (response) {
+      console.log('Success!');
+      vm.userInfo = response.data;
+      console.log(vm.userInfo, 'userinfo');
+    }).catch(function (error) {
+      console.log('Failure!', error);
+    });
+  }// End GET for user info
 
-vm.newResource = function(newR){
-        console.log(newR, 'adding new resource');
-       //should be able to get enteredbyuserid from req.user.userid
-}
+  vm.getUserInfo();
 
-vm.newResourceAlert = function(ev) {
+  /* User alert MdDialog box for User Details on User tab */
+  vm.userAlert = function (ev) {
+    console.log('dialog box');
+    $mdDialog.show({
+      controller: 'UserController',
+      templateUrl: 'views/templates/userDialog.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true
+    })
+  } //End MdDialog
+
+
+  /* POST route for adding a new resource to resources */
+  vm.newResource = function (newR) {
+    console.log(newR, 'adding new resource');
+    //should be able to get enteredbyuserid from req.user.userid
+  }//End POST
+
+  /* MdDialog for entering in the new resource */
+  vm.newResourceAlert = function (ev) {
     console.log('dialog box');
     $mdDialog.show({
       controller: 'UserController as uc',
       templateUrl: 'views/templates/new.html',
       parent: angular.element(document.body),
       targetEvent: ev,
-      clickOutsideToClose:true
+      clickOutsideToClose: true
     })
-  }
+  } //End MdDialog
 
 });
