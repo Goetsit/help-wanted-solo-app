@@ -1,0 +1,32 @@
+<md-dialog aria-label="Help Wanted">
+        <!-- <div ng-controller="InfoController as info" > -->
+          <form ng-cloak>
+            <md-toolbar>
+              <div class="md-toolbar-tools">
+               {{info.resource}}
+              </div>
+            </md-toolbar>
+      
+            <md-dialog-content>
+              <div class="md-dialog-content">
+                  <p>Resource Name: <input type="text" ng-model = "uc.newR.resourcename"> </p>
+                  <p>Resource website URL: <input type="text" ng-model = "uc.newR.website"> </p>
+                  <p>Resource Phone Number: <input type="text" ng-model = "uc.newR.phone"> </p>
+                  <!-- might add these later -->
+               <!--  Is this a resource for women? <input type="checkbox" ng-model = "uc.newR.iswomens"> <br>
+                 Is this a resource for mental health? <input type="checkbox" ng-model = "uc.newR.ismental"> <br>
+                 Is this resource a service? <input type="checkbox" ng-model = "uc.newR.isservice"><br>
+                 Is this resource national? <input type="checkbox" ng-model = "uc.newR.isnational"><br>  -->
+                   <p>Resource Description: <textarea name="description" id="" cols="30" rows="10" ng-model="uc.newR.description"></textarea></p> 
+                    <md-button type="button" ng-click="uc.newResource(uc.newR)" layout="end">Add New Resource</md-button>
+                
+            </md-dialog-content>
+      
+            <md-dialog-actions layout="row">
+              <span flex></span>
+      
+            </md-dialog-actions>
+          </form>
+        <!-- </div> -->
+       
+      </md-dialog>  

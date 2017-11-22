@@ -158,5 +158,6 @@ img {
 }
 
 .searchBar{
-  margin-left: 5px;
+  padding: 5px;
+  background-color: #8BAAAD;
 }

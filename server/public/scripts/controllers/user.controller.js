@@ -6,7 +6,6 @@ myApp.controller('UserController', function($http,UserService, $mdDialog) {
   vm.bookmarked = [];
   vm.userInfo= [];
 
-
    
   vm.getBookmarked = function(){
     $http.get('/user/bookmark').then(function (response) {
@@ -57,5 +56,20 @@ vm.userAlert = function(ev) {
   })
 }
 
+vm.newResource = function(newR){
+        console.log(newR, 'adding new resource');
+       //should be able to get enteredbyuserid from req.user.userid
+}
+
+vm.newResourceAlert = function(ev) {
+    console.log('dialog box');
+    $mdDialog.show({
+      controller: 'UserController as uc',
+      templateUrl: 'views/templates/new.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true
+    })
+  }
 
 });

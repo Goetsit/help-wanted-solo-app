@@ -39,7 +39,11 @@ router.get('/bookmark', function (req, res) {
       console.log('Error connecting to db', errorConnectingToDB);
       res.sendStatus(500);
     } else {
-      var queryText = 'SELECT r.*,h.* FROM public."userbookmarked" eb INNER JOIN public.resources r ON r.resourceid = eb.resourceid LEFT JOIN public.hoursofoperation h ON h.resourceid = r.resourceid WHERE eb."userid" = $1' ;
+      var queryText = 'SELECT r.*,h.* ' +
+                      'FROM public."userbookmarked" eb ' +
+                      'INNER JOIN public.resources r ON r.resourceid = eb.resourceid ' +
+                      'LEFT JOIN public.hoursofoperation h ON h.resourceid = r.resourceid ' +
+                      'WHERE eb."userid" = $1' ;
       db.query(queryText, [user], function (errorMakingQuery, result) {
         done();
         if (errorMakingQuery) {
@@ -86,7 +90,15 @@ router.get('/userinfo', function (req, res) {
       console.log('Error connecting to db', errorConnectingToDB);
       res.sendStatus(500);
     } else {
-      var queryText = 'SELECT u."username",u."datecreated",ls."statename",COUNT(ub."resourceid") FROM public."usermaster" u INNER JOIN public."locationstate" ls ON ls."stateid" = u."stateid" LEFT JOIN public."userbookmarked" ub ON ub."userid" = u."userid" WHERE u."userid" = $1 GROUP BY u."username", ls."statename", u."datecreated"' ;
+      var queryText = 'SELECT u."username" ' +
+                      ',u."datecreated" ' +
+                      ',ls."statename" ' +
+                      ',COUNT(ub."resourceid") ' +
+                      'FROM public."usermaster" u ' +
+                      'INNER JOIN public."locationstate" ls ON ls."stateid" = u."stateid" ' +
+                      'LEFT JOIN public."userbookmarked" ub ON ub."userid" = u."userid" ' +
+                      'WHERE u."userid" = $1 ' +
+                      'GROUP BY u."username", ls."statename", u."datecreated"' ;
       db.query(queryText, [user], function (errorMakingQuery, result) {
         done();
         if (errorMakingQuery) {

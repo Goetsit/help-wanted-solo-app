@@ -18,7 +18,28 @@ router.get('/', function (req, res) {
       console.log('Error connecting to db', errorConnectingToDB);
       res.sendStatus(500);
     } else {
-      var queryText = 'SELECT r."resourceid",r."resourcename", r."description",r."recommendations",r."imageurl" ,r."phone",r."website" ,h."mondayhours" ,h."tuesdayhours",h."wednesdayhours",h."thursdayhours",h."fridayhours" ,h."saturdayhours",h."fridayhours",h."saturdayhours",h."sundayhours", a.* FROM public."resources" r LEFT JOIN public."hoursofoperation" h ON h.resourceid = r.resourceid LEFT JOIN public."resourceaddress" ra ON ra."resourceid" = r."resourceid"  LEFT JOIN public."addresses" a ON a."addressid" = ra."addressid"WHERE "isapproved" = TRUE';
+      var queryText = 'SELECT r."resourceid" ' +
+                             ',r."resourcename" ' +
+                             ', r."description" '+
+                             ',r."recommendations" '+
+                             ',r."imageurl" '+
+                             ',r."phone" '+
+                             ',r."website" '+
+                             ',h."mondayhours" '+
+                             ',h."tuesdayhours" '+
+                             ',h."wednesdayhours" '+
+                             ',h."thursdayhours" '+
+                             ',h."fridayhours" '+
+                             ',h."saturdayhours" '+
+                             ',h."fridayhours" '+
+                             ',h."saturdayhours" '+
+                             ',h."sundayhours" '+
+                             ', a.* '+
+                             'FROM public."resources" r '+
+                             'LEFT JOIN public."hoursofoperation" h ON h.resourceid = r.resourceid '+
+                             'LEFT JOIN public."resourceaddress" ra ON ra."resourceid" = r."resourceid"  '+
+                             'LEFT JOIN public."addresses" a ON a."addressid" = ra."addressid" '+
+                             'WHERE "isapproved" = TRUE;';
       db.query(queryText, function (errorMakingQuery, result) {
         done();
         if (errorMakingQuery) {
@@ -60,13 +81,20 @@ router.get('/:id', function (req, res) {
 router.post('/bookmark', function (req, res) {
   var bookmark = req.body.resourceid;
   var user = req.user.userid;
-  console.log('bookmarking', bookmark);
   pool.connect(function (errorConnectingToDB, db, done) {
     if (errorConnectingToDB) {
       console.log('Error connecting to db', errorConnectingToDB);
       res.sendStatus(500);
     } else {
-      var queryText = 'INSERT INTO "userbookmarked" ("userid", "resourceid") VALUES ((SELECT userid FROM usermaster WHERE userid = $1),(SELECT resourceid FROM resources WHERE resourceid = $2));';
+      var queryText ='INSERT INTO "userbookmarked" ("userid" ' +
+                                                  ', "resourceid")' +
+                     'VALUES ((SELECT userid FROM public."usermaster" WHERE userid = $1) ' +
+                     ',(SELECT resourceid FROM public."resources" WHERE NOT EXISTS (' +
+                                                                           'SELECT resourceid ' +
+                                                                           'FROM public."userbookmarked" ' +
+                                                                           'WHERE resourceid = $2' +
+                                                                          ')' +
+                                                        'AND resourceid = $2));';
       db.query(queryText, [user, bookmark], function (errorMakingQuery, result) {
         done();
         if (errorMakingQuery) {
@@ -90,7 +118,9 @@ router.put('/recommend/:id', function (req, res) {
       console.log('Error connecting to db', errorConnectingToDB);
       res.sendStatus(500);
     } else {
-      var queryText = 'UPDATE "resources" SET "recommendations" = ("recommendations"+1) WHERE "resourceid" = $1;';
+      var queryText = 'UPDATE "resources" ' +
+                      'SET "recommendations" = ("recommendations"+1) ' +
+                      'WHERE "resourceid" = $1;';
       db.query(queryText, [recommend], function (errorMakingQuery, result) {
         done();
         if (errorMakingQuery) {
