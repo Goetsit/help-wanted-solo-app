@@ -2,6 +2,7 @@ myApp.service('UserService', function($http, $location){
   console.log('UserService Loaded');
   var self = this;
   self.userObject = {};
+  self.testArray = {};
 
   self.getuser = function(){
     console.log('UserService -- getuser');
@@ -28,4 +29,17 @@ myApp.service('UserService', function($http, $location){
       $location.path("/home");
     });
   }
+
+  self.getSingleResource = function(resource){
+    console.log(resource,'hello user service');
+     $http.get('/info/'+ resource).then(function (response) {
+          console.log('Success!');
+          self.testArray = response.data;
+          console.log(self.testArray, 'resource array on get');
+      }).catch(function (error) {
+          console.log('Failure!', error);
+      }); 
+  } 
+
+ 
 });

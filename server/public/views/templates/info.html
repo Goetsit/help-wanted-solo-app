@@ -14,6 +14,7 @@
         </strong>
         <img src={{resources.imageurl}} alt="">
 
+
         <br>
         <md-button class="md-raised" id= "infoBtn" ng-click="info.bookmark($index)">
             <i class="material-icons">bookmark_border</i>Bookmark Me!</md-button>
@@ -60,6 +61,7 @@
             <li>Sunday: {{resources.sundayhours}}</li>
             <br>
 
-
+            <md-button class="md-raised" id= "infoBtn" ng-click="info.resourceAlert($event, resources.resourceid)">
+                   Details</md-button>
 
     </div>

@@ -4,7 +4,7 @@ myApp.controller('InfoController', function ($http, UserService, $mdDialog) {
   var vm = this;
   vm.userService = UserService;
   vm.resources = [];
-  // vm.resource=[];
+  vm.resourceTest = vm.userService;
 
 
   /*  Initial GET request to populate Resource tab  */
@@ -77,10 +77,13 @@ myApp.controller('InfoController', function ($http, UserService, $mdDialog) {
 
 
   /* May or may not use below, now a stretch goal - didn't want to delete  */
-  /*
+  
     
-    vm.resourceAlert = function(ev) {
-     console.log('console on resource alert', vm.resource)
+    vm.resourceAlert = function(ev, resource) {
+      console.log(vm.resourceTest,'US test');
+      console.log(resource, 'resource on info controller');
+      var resourceToSend = resource;
+      vm.resourceArr = UserService.getSingleResource(resourceToSend);
       $mdDialog.show({
         controller: 'InfoController as info',
         templateUrl: 'views/templates/resourceDialog.html',
@@ -88,17 +91,17 @@ myApp.controller('InfoController', function ($http, UserService, $mdDialog) {
         targetEvent: ev,
         clickOutsideToClose:true,
         resolve: function() {
-          return vm.resource;    
+          return UserService.resource;    
         }
       }
       )
       console.log('HELLO WORLD');
     }
   
+    /*
    vm.getSingleResource = function(event, resource){
-  
-    console.log(resource.resourceid,'hello');
-     $http.get('/info/'+ resource.resourceid).then(function (response) {
+    console.log(resource,'hello');
+     $http.get('/info/'+ resource).then(function (response) {
           console.log('Success!');
           vm.resource = response.data;
           console.log(vm.resource,'vm.resource');
@@ -107,9 +110,6 @@ myApp.controller('InfoController', function ($http, UserService, $mdDialog) {
           console.log('Failure!', error);
       }); 
   }
-    
-  
-  
   */
 
 });

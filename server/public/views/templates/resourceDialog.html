@@ -9,30 +9,29 @@
 
       <md-dialog-content>
         <div class="md-dialog-content">
-          <div class = "resourceDialog" ng-repeat="resource in info.resource track by $index" >
+          <div class = "resourceDialog" ng-repeat = "test in info.resourceTest.testArray">
           <br>
-          {{resource}}
-          <h3>{{resource.resourcename}}</h3> 
-          {{resource.streetaddress}}, {{resource.city}} {{resource.state}}, {{resource.zip}}
-        
+          <h3>{{test.resourcename}}</h3> 
+          {{test.streetaddress}}, {{test.city}} {{test.state}}, {{test.zip}}
+
           <p>
             <strong>Contact:</strong>
             <ul>
-              <li>Phone: {{resource.phone}}</li><br>
-              <li>Website: {{resource.website}}</li>
+              <li>Phone: {{test.phone}}</li><br>
+              <li>Website: {{test.website}}</li>
             </ul>
            <p><strong>Hours of Operation:</strong></p>
             <ul>
-              <li>Monday: {{resource.mondayhours}}</li><br>
-              <li>Tuesday: {{resource.tuesdayhours}}</li><br>
-              <li>Wednesday: {{resource.wednesdayhours}}</li><br>
-              <li>Thursday: {{resource.thursdayhours}}</li><br>
-              <li>Friday: {{resource.fridayhours}}</li><br>
-              <li>Saturday: {{resource.saturdayhours}}</li><br>
-              <li>Sunday: {{resource.sundayhours}}</li><br>
+              <li>Monday: {{test.mondayhours}}</li><br>
+              <li>Tuesday: {{test.tuesdayhours}}</li><br>
+              <li>Wednesday: {{test.wednesdayhours}}</li><br>
+              <li>Thursday: {{test.thursdayhours}}</li><br>
+              <li>Friday: {{test.fridayhours}}</li><br>
+              <li>Saturday: {{test.saturdayhours}}</li><br>
+              <li>Sunday: {{test.sundayhours}}</li><br>
             </ul>
             <p><strong>Description:</strong></p>
-            <p>{{resource.description}}</p>
+            <p>{{test.description}}</p>
           <h2>Add a new comment:</h2>
           <textarea rows="4" cols="50" ng-model="info.comment"> </textarea>
           <md-button ng-click="info.addComment(info.comment)">Add comment</md-button>
@@ -44,7 +43,7 @@
       </md-dialog-content>
 
       <md-dialog-actions layout="row">
-        <md-button href={{resources.website}} target="_blank" md-autofocus>
+        <md-button href={{test.website}} target="_blank" md-autofocus>
           Navigate to resource website
         </md-button>
         <span flex></span>
