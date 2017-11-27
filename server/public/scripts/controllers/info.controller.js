@@ -47,9 +47,9 @@ myApp.controller('InfoController', function ($http, UserService, $mdDialog) {
   }; //END dialog for success
 
   /* start POST route for adding bookmark to User tab, userbookmarked table */
-  vm.bookmark = function (index) {
-    console.log(vm.resources[index].resourceid, 'on bookmark, resourceid');
-    $http.post('/info/bookmark', vm.resources[index]).then(function (response) {
+  vm.bookmark = function (id) {
+    console.log(id, 'on bookmark, resourceid');
+    $http.post('/info/bookmark/' + id).then(function (response) {
       vm.bookmarkAlertSuccess(event);  //call success dialog when success
     }).catch(function (error) {
       vm.bookmarkAlertError(event); //call failure when failure
@@ -97,19 +97,4 @@ myApp.controller('InfoController', function ($http, UserService, $mdDialog) {
       )
       console.log('HELLO WORLD');
     }
-  
-    /*
-   vm.getSingleResource = function(event, resource){
-    console.log(resource,'hello');
-     $http.get('/info/'+ resource).then(function (response) {
-          console.log('Success!');
-          vm.resource = response.data;
-          console.log(vm.resource,'vm.resource');
-          vm.resourceAlert(event);
-      }).catch(function (error) {
-          console.log('Failure!', error);
-      }); 
-  }
-  */
-
 });

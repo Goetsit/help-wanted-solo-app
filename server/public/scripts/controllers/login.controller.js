@@ -45,4 +45,7 @@ myApp.controller('LoginController', function($http, $location, UserService) {
         });
       }
     }
+    vm.testThing = function(){
+      console.log('test');
+    }
 });

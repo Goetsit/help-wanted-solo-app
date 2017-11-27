@@ -78,8 +78,9 @@ router.get('/:id', function (req, res) {
   });
 });
 
-router.post('/bookmark', function (req, res) {
+router.post('/bookmark/:id', function (req, res) {
   var bookmark = req.body.resourceid;
+  var resourceID = req.params.id;
   var user = req.user.userid;
   pool.connect(function (errorConnectingToDB, db, done) {
     if (errorConnectingToDB) {
@@ -95,7 +96,7 @@ router.post('/bookmark', function (req, res) {
                                                                            'WHERE resourceid = $2' +
                                                                           ')' +
                                                         'AND resourceid = $2));';
-      db.query(queryText, [user, bookmark], function (errorMakingQuery, result) {
+      db.query(queryText, [user, resourceID], function (errorMakingQuery, result) {
         done();
         if (errorMakingQuery) {
           console.log('Error making query', errorMakingQuery, result)

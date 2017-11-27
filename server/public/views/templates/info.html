@@ -12,13 +12,14 @@
         <strong id="name">
             <h2>{{resources.resourcename}}</h2>
         </strong>
+        {{resources.streetaddress}}, {{resources.city}} {{resources.state}}, {{resources.zip}} <br>
         <img src={{resources.imageurl}} alt="">
 
 
         <br>
     
             <md-button class="md-raised" id= "infoBtn" ng-click="info.resourceAlert($event, resources.resourceid)">
-                    Details</md-button>
+                    More Details</md-button>
  
       
         <br>
@@ -31,7 +32,7 @@
             <strong>Description: </strong>{{resources.description}}
             <br> </p>
         <p>
-                <md-button class="md-raised" id= "infoBtn" ng-click="info.bookmark($index)">
+                <md-button class="md-raised" id= "infoBtn" ng-click="info.bookmark(resources.resourceid)">
                         <i class="material-icons">bookmark_border</i>Bookmark Me!</md-button>
                     <md-button class="md-raised" id="infoBtn" ng-click="info.recommend(resources.resourceid)">
                         <i class="material-icons">check_circle</i>Recommend This Resource!</md-button>

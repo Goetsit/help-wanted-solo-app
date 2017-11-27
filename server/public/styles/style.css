@@ -172,3 +172,15 @@ img {
   height: 20px;
   width: 200px;
 }
+
+.homeContainer{
+  text-align: center;
+}
+
+#aboutApp{
+  text-align: left;
+}
+
+#mission{
+  text-align: left;
+}
