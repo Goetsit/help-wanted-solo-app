@@ -49,9 +49,9 @@
             -->
 
             <div class="map">
-                map
-            <ng-map center="{{info.map.ll}}" zoom="{{map.zoom}}" id="mapTest">
-                    <marker position="{{info.map.ll}}" title="Hello World!"></marker>
+      
+            <ng-map center="{{resources.lat}},{{resources.long}}" zoom="{{map.zoom}}" id="mapTest">
+                    <marker position="{{resources.lat}},{{resources.long}}" title="Hello World!"></marker>
             </ng-map>
         </div>
     
