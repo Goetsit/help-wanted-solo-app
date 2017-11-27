@@ -7,18 +7,17 @@
 </div>
 
 <div class="infoContainer">
-    <div class="resourceDiv" ng-repeat="resources in info.resources | filter: info.text">
+    <div class="resourceDiv" ng-repeat="resources in info.resources | filter: info.text track by $index">
 
         <strong id="name">
             <h2>{{resources.resourcename}}</h2>
         </strong>
         <img src={{resources.imageurl}} alt="">
 
-
         <br>
         <md-button class="md-raised" id= "infoBtn" ng-click="info.bookmark($index)">
             <i class="material-icons">bookmark_border</i>Bookmark Me!</md-button>
-        <md-button class="md-raised" id="infoBtn" ng-click="info.recommend($index)">
+        <md-button class="md-raised" id="infoBtn" ng-click="info.recommend(resources.resourceid)">
             <i class="material-icons">check_circle</i>Recommend This Resource!</md-button>
         <md-button class="md-raised" id="infoBtn" href={{resources.website}} target="_blank" md-autofocus>
             <i class="material-icons">explore</i>

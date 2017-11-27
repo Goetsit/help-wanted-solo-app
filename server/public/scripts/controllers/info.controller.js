@@ -57,9 +57,9 @@ myApp.controller('InfoController', function ($http, UserService, $mdDialog) {
   } //end POST to userbookmarked table
 
   /* PUT route for recommending a resource, recommendations column on resources table */
-  vm.recommend = function (index) {
-    console.log(vm.resources[index].resourceid, 'on recommend, resourceid');
-    $http.put('/info/recommend/' + vm.resources[index].resourceid).then(function (response) {
+  vm.recommend = function (id) {
+    console.log(id, 'on recommend, resourceid');
+    $http.put('/info/recommend/' + id).then(function (response) {
       vm.getResources();
       console.log('success!');
     }).catch(function (error) {
