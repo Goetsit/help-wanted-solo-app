@@ -67,34 +67,23 @@ myApp.controller('InfoController', function ($http, UserService, $mdDialog) {
     })
   } //END PUT for recommendations
 
-  /* Begin search Query */
 
-  vm.searchResources = function (text) {
-    console.log(text);
-    console.log('search');
-  }// END search
-
-
-
-  /* May or may not use below, now a stretch goal - didn't want to delete  */
-  
-    
-    vm.resourceAlert = function(ev, resource) {
-      console.log(vm.resourceTest,'US test');
-      console.log(resource, 'resource on info controller');
-      var resourceToSend = resource;
-      vm.resourceArr = UserService.getSingleResource(resourceToSend);
-      $mdDialog.show({
-        controller: 'InfoController as info',
-        templateUrl: 'views/templates/resourceDialog.html',
-        parent: angular.element(document.body),
-        targetEvent: ev,
-        clickOutsideToClose:true,
-        resolve: function() {
-          return UserService.resource;    
-        }
+  vm.resourceAlert = function (ev, resource) {
+    console.log(vm.resourceTest, 'US test');
+    console.log(resource, 'resource on info controller');
+    var resourceToSend = resource;
+    vm.resourceArr = UserService.getSingleResource(resourceToSend);
+    $mdDialog.show({
+      controller: 'InfoController as info',
+      templateUrl: 'views/templates/resourceDialog.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true,
+      resolve: function () {
+        return UserService.resource;
       }
-      )
-      console.log('HELLO WORLD');
     }
+    )
+    console.log('HELLO WORLD');
+  }
 });

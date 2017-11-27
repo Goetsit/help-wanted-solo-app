@@ -12,16 +12,17 @@
         <strong id="name">
             <h2>{{resources.resourcename}}</h2>
         </strong>
-        {{resources.streetaddress}}, {{resources.city}} {{resources.state}}, {{resources.zip}} <br>
+        <p> {{resources.streetaddress}}, {{resources.city}} {{resources.state}}, {{resources.zip}}</p>
+        <br>
         <img src={{resources.imageurl}} alt="">
 
 
         <br>
-    
-            <md-button class="md-raised" id= "infoBtn" ng-click="info.resourceAlert($event, resources.resourceid)">
-                    More Details</md-button>
- 
-      
+
+        <md-button class="md-raised" id="infoBtn" ng-click="info.resourceAlert($event, resources.resourceid)">
+            More Details</md-button>
+
+
         <br>
         <p>
             <strong>User Recommendations: </strong> {{resources.recommendations}}
@@ -32,13 +33,13 @@
             <strong>Description: </strong>{{resources.description}}
             <br> </p>
         <p>
-                <md-button class="md-raised" id= "infoBtn" ng-click="info.bookmark(resources.resourceid)">
-                        <i class="material-icons">bookmark_border</i>Bookmark Me!</md-button>
-                    <md-button class="md-raised" id="infoBtn" ng-click="info.recommend(resources.resourceid)">
-                        <i class="material-icons">check_circle</i>Recommend This Resource!</md-button>
-                <md-button class="md-raised" id="infoBtn" href={{resources.website}} target="_blank" md-autofocus>
-                        <i class="material-icons">explore</i>
-                        Navigate to resource website
-                    </md-button>
-           
+            <md-button class="md-raised" id="infoBtn" ng-click="info.bookmark(resources.resourceid)">
+                <i class="material-icons">bookmark_border</i>Bookmark Me!</md-button>
+            <md-button class="md-raised" id="infoBtn" ng-click="info.recommend(resources.resourceid)">
+                <i class="material-icons">check_circle</i>Recommend This Resource!</md-button>
+            <md-button class="md-raised" id="infoBtn" href={{resources.website}} target="_blank" md-autofocus>
+                <i class="material-icons">explore</i>
+                Navigate to resource website
+            </md-button>
+
     </div>

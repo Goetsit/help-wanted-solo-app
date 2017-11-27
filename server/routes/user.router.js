@@ -12,14 +12,14 @@ var config = {
 
 var pool = new pg.Pool(config);
 // Handles Ajax request for user information if user is authenticated
-router.get('/', function(req, res) {
+router.get('/', function (req, res) {
   console.log('get /user route');
   // check if logged in
-  if(req.isAuthenticated()) {
+  if (req.isAuthenticated()) {
     // send back user object from database
     console.log('logged in', req.user);
     var userInfo = {
-      username : req.user.username
+      username: req.user.username
     };
     res.send(userInfo);
   } else {
@@ -30,7 +30,7 @@ router.get('/', function(req, res) {
   }
 });
 
-	
+
 
 router.get('/bookmark', function (req, res) {
   var user = req.user.userid;
@@ -40,10 +40,10 @@ router.get('/bookmark', function (req, res) {
       res.sendStatus(500);
     } else {
       var queryText = 'SELECT r.*,h.* ' +
-                      'FROM public."userbookmarked" eb ' +
-                      'INNER JOIN public.resources r ON r.resourceid = eb.resourceid ' +
-                      'LEFT JOIN public.hoursofoperation h ON h.resourceid = r.resourceid ' +
-                      'WHERE eb."userid" = $1' ;
+        'FROM public."userbookmarked" eb ' +
+        'INNER JOIN public.resources r ON r.resourceid = eb.resourceid ' +
+        'LEFT JOIN public.hoursofoperation h ON h.resourceid = r.resourceid ' +
+        'WHERE eb."userid" = $1';
       db.query(queryText, [user], function (errorMakingQuery, result) {
         done();
         if (errorMakingQuery) {
@@ -91,14 +91,14 @@ router.get('/userinfo', function (req, res) {
       res.sendStatus(500);
     } else {
       var queryText = 'SELECT u."username" ' +
-                      ',u."datecreated" ' +
-                      ',ls."statename" ' +
-                      ',COUNT(ub."resourceid") ' +
-                      'FROM public."usermaster" u ' +
-                      'INNER JOIN public."locationstate" ls ON ls."stateid" = u."stateid" ' +
-                      'LEFT JOIN public."userbookmarked" ub ON ub."userid" = u."userid" ' +
-                      'WHERE u."userid" = $1 ' +
-                      'GROUP BY u."username", ls."statename", u."datecreated"' ;
+        ',u."datecreated" ' +
+        ',ls."statename" ' +
+        ',COUNT(ub."resourceid") ' +
+        'FROM public."usermaster" u ' +
+        'INNER JOIN public."locationstate" ls ON ls."stateid" = u."stateid" ' +
+        'LEFT JOIN public."userbookmarked" ub ON ub."userid" = u."userid" ' +
+        'WHERE u."userid" = $1 ' +
+        'GROUP BY u."username", ls."statename", u."datecreated"';
       db.query(queryText, [user], function (errorMakingQuery, result) {
         done();
         if (errorMakingQuery) {
@@ -120,25 +120,25 @@ router.post('/new', function (req, res) {
   var resourceToAddPhone = req.body.phone;
   var resourceToAddDescription = req.body.description;
   var user = req.user.userid;
-   pool.connect(function (errorConnectingToDB, db, done) {
+  pool.connect(function (errorConnectingToDB, db, done) {
     if (errorConnectingToDB) {
       console.log('Error connecting to db', errorConnectingToDB);
       res.sendStatus(500);
     } else {
       var queryText = 'INSERT INTO public."resources"( ' +
-                                                      '"resourcename" ' +
-                                                      ',"resourcestateid" ' +
-                                                      ',"description" ' +
-                                                      ',"phone" ' +
-                                                      ',"website" ' +
-                                                      ',"enteredbyuserid") ' +
-                                    'VALUES ($1 ' +
-                                      ',(SELECT "stateid" FROM public."usermaster" WHERE "userid" = $5) ' +
-                                      ',$2 ' +
-                                      ',$3 '+
-                                      ',$4 ' +
-                                      ',$5);';
-      db.query(queryText, [resourceToAddName,resourceToAddDescription,resourceToAddPhone, resourceToAddWebsite, user], function (errorMakingQuery, result) {
+        '"resourcename" ' +
+        ',"resourcestateid" ' +
+        ',"description" ' +
+        ',"phone" ' +
+        ',"website" ' +
+        ',"enteredbyuserid") ' +
+        'VALUES ($1 ' +
+        ',(SELECT "stateid" FROM public."usermaster" WHERE "userid" = $5) ' +
+        ',$2 ' +
+        ',$3 ' +
+        ',$4 ' +
+        ',$5);';
+      db.query(queryText, [resourceToAddName, resourceToAddDescription, resourceToAddPhone, resourceToAddWebsite, user], function (errorMakingQuery, result) {
         done();
         if (errorMakingQuery) {
           console.log('Error making query', errorMakingQuery, result)
@@ -153,7 +153,7 @@ router.post('/new', function (req, res) {
 
 
 // clear all server session information about this user
-router.get('/logout', function(req, res) {
+router.get('/logout', function (req, res) {
   // Use passport's built-in method to log out the user
   console.log('Logged out');
   req.logOut();

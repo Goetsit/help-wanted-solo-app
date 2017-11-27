@@ -44,7 +44,7 @@ myApp.controller('UserController', function ($http, UserService, $mdDialog) {
         .clickOutsideToClose(true)
         .title('Resource added!')
         .textContent('Our admins have been notified of the addition for further approval.' +
-      'We greatly appreciate your contribution!')
+        'We greatly appreciate your contribution!')
         .ariaLabel('Error')
         .ok('Ok')
         .targetEvent(ev)
@@ -96,12 +96,12 @@ myApp.controller('UserController', function ($http, UserService, $mdDialog) {
   /* POST route for adding a new resource to resources */
   vm.newResource = function (newR) {
     console.log(newR, 'adding new resource');
-      $http.post('/user/new', newR).then(function (response) {
-       console.log('success!')
-       vm.newResourceAlertAdd(event);
-      }).catch(function (error) {
-        console.log('failure')
-      })
+    $http.post('/user/new', newR).then(function (response) {
+      console.log('success!')
+      vm.newResourceAlertAdd(event);
+    }).catch(function (error) {
+      console.log('failure')
+    })
     //should be able to get enteredbyuserid from req.user.userid
   }//End POST
 
