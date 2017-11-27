@@ -53,10 +53,10 @@ myApp.controller('UserController', function ($http, UserService, $mdDialog) {
 
   /* DELETE from userbookmarked, removes book mark from user page */
 
-  vm.removeBookmarked = function (index) {
-    console.log(vm.bookmarked[index].resourceid, 'on remove bookmark');
-    var id = vm.bookmarked[index].resourceid
-    $http.delete('/user/bookmark/' + id).then(function (response) {
+  vm.removeBookmarked = function (id) {
+    console.log(id, 'on remove bookmark');
+    var idToSend = id
+    $http.delete('/user/bookmark/' + idToSend).then(function (response) {
       console.log('Successfully deleted');
       vm.bookmarkAlertRemove(event);
       vm.getBookmarked();

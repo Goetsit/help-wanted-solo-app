@@ -60,6 +60,7 @@ router.get('/bookmark', function (req, res) {
 
 router.delete('/bookmark/:id', function (req, res) {
   var resourceid = req.params.id;
+  console.log('RESOURCE ID ON DELETE', resourceid);
   var bookmark = req.body.resourceid;
   var user = req.user.userid;
   pool.connect(function (errorConnectingToDB, db, done) {

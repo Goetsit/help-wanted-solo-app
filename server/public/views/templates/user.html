@@ -10,7 +10,7 @@
     <h1>Bookmarks</h1>
   
     <div class="bookmarked" ng-repeat="bookmarked in uc.bookmarked">
-            <h3>{{bookmarked.resourcename}}</h3> <md-button class ="md-raised " id="removeBookmarkBtn" ng-click="uc.removeBookmarked($index)">Remove Bookmark</md-button>
+            <h3>{{bookmarked.resourcename}}</h3> <md-button class ="md-raised " id="removeBookmarkBtn" ng-click="uc.removeBookmarked(bookmarked.resourceid)">Remove Bookmark</md-button>
             <p><strong>Description:</strong></p>
             <p>{{bookmarked.description}}</p>
             
