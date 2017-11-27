@@ -159,9 +159,19 @@ img {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 15px;
   padding: 10px;
+  text-align: left;
   
 }
 
+.map{
+  height: 200px;
+  width: 200px;
+}
+
+#mapTest {
+  height: 200px;
+  width: 200px;
+}
 
 .searchBar{
   padding: 5px;
@@ -183,4 +193,8 @@ img {
 
 #landing{
   text-align: left;
+}
+
+.userContainer{
+  text-align: center;
 }

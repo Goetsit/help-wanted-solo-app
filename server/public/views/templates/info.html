@@ -42,4 +42,17 @@
                 Navigate to resource website
             </md-button>
 
+<!--
+            <md-button class="md-raised" id="infoBtn" href= "https://www.google.com/maps/place/{{resources.streetaddress}}, {{resources.city}} {{resources.state}}, {{resources.zip}}"
+            target="_blank" md-autofocus>
+                </md-button>
+            -->
+
+            <div class="map">
+                map
+            <ng-map center="{{info.map.ll}}" zoom="{{map.zoom}}" id="mapTest">
+                    <marker position="{{info.map.ll}}" title="Hello World!"></marker>
+            </ng-map>
+        </div>
+    
     </div>

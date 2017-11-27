@@ -1,16 +1,16 @@
 // myApp.controller('Dialogcontroller', function($http,UserService,$mdDialog, variableName) {
-myApp.controller('InfoController', function ($http, UserService, $mdDialog) {
+myApp.controller('InfoController', function ($http, UserService, $mdDialog, NgMap) {
   console.log('InfoController created');
   var vm = this;
   vm.userService = UserService;
   vm.resources = [];
   vm.resourceTest = vm.userService;
 
-
   /*  Initial GET request to populate Resource tab  */
   vm.getResources = function () {
     $http.get('/info').then(function (response) {
       vm.resources = response.data;
+   //   console.log(vm.resources.resourcename.getPlace(),'literally have no idea');
     }).catch(function (error) {
       console.log('Failure!', error);
     });
@@ -84,6 +84,11 @@ myApp.controller('InfoController', function ($http, UserService, $mdDialog) {
       }
     }
     )
-    console.log('HELLO WORLD');
   }
+
+  vm.map = {
+    ll: '44.906005, -93.198442',
+    zoom: 18
+}; // end map
+
 });
