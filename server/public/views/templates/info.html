@@ -16,14 +16,11 @@
 
 
         <br>
-        <md-button class="md-raised" id= "infoBtn" ng-click="info.bookmark($index)">
-            <i class="material-icons">bookmark_border</i>Bookmark Me!</md-button>
-        <md-button class="md-raised" id="infoBtn" ng-click="info.recommend(resources.resourceid)">
-            <i class="material-icons">check_circle</i>Recommend This Resource!</md-button>
-        <md-button class="md-raised" id="infoBtn" href={{resources.website}} target="_blank" md-autofocus>
-            <i class="material-icons">explore</i>
-            Navigate to resource website
-        </md-button>
+    
+            <md-button class="md-raised" id= "infoBtn" ng-click="info.resourceAlert($event, resources.resourceid)">
+                    Details</md-button>
+ 
+      
         <br>
         <p>
             <strong>User Recommendations: </strong> {{resources.recommendations}}
@@ -34,34 +31,13 @@
             <strong>Description: </strong>{{resources.description}}
             <br> </p>
         <p>
-            <strong>Contact:</strong>
-        </p>
-        <ul>
-            <li>Phone: {{resources.phone}}</li>
-            <br>
-            <li>Address: {{resources.streetaddress}}, {{resources.city}} {{resources.state}}, {{resources.zip}}</li>
-            <br>
-        </ul>
-        <p>
-            <strong>Hours of Operation:</strong>
-        </p>
-        <ul>
-            <li>Monday: {{resources.mondayhours}}</li>
-            <br>
-            <li>Tuesday: {{resources.tuesdayhours}}</li>
-            <br>
-            <li>Wednesday: {{resources.wednesdayhours}}</li>
-            <br>
-            <li>Thursday: {{resources.thursdayhours}}</li>
-            <br>
-            <li>Friday: {{resources.fridayhours}}</li>
-            <br>
-            <li>Saturday: {{resources.saturdayhours}}</li>
-            <br>
-            <li>Sunday: {{resources.sundayhours}}</li>
-            <br>
-
-            <md-button class="md-raised" id= "infoBtn" ng-click="info.resourceAlert($event, resources.resourceid)">
-                   Details</md-button>
-
+                <md-button class="md-raised" id= "infoBtn" ng-click="info.bookmark($index)">
+                        <i class="material-icons">bookmark_border</i>Bookmark Me!</md-button>
+                    <md-button class="md-raised" id="infoBtn" ng-click="info.recommend(resources.resourceid)">
+                        <i class="material-icons">check_circle</i>Recommend This Resource!</md-button>
+                <md-button class="md-raised" id="infoBtn" href={{resources.website}} target="_blank" md-autofocus>
+                        <i class="material-icons">explore</i>
+                        Navigate to resource website
+                    </md-button>
+           
     </div>

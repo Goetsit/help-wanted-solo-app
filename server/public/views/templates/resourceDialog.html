@@ -30,8 +30,6 @@
               <li>Saturday: {{test.saturdayhours}}</li><br>
               <li>Sunday: {{test.sundayhours}}</li><br>
             </ul>
-            <p><strong>Description:</strong></p>
-            <p>{{test.description}}</p>
           <h2>Add a new comment:</h2>
           <textarea rows="4" cols="50" ng-model="info.comment"> </textarea>
           <md-button ng-click="info.addComment(info.comment)">Add comment</md-button>
@@ -43,9 +41,6 @@
       </md-dialog-content>
 
       <md-dialog-actions layout="row">
-        <md-button href={{test.website}} target="_blank" md-autofocus>
-          Navigate to resource website
-        </md-button>
         <span flex></span>
 
       </md-dialog-actions>
