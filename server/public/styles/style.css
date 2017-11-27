@@ -3,18 +3,19 @@ body, html {
   padding: 0;
   font-family: sans-serif;
   font-size: 14px;
+  background-color: #E5E5E1;
 }
 
 .instructions .container h1 {
   font-size: 32px;
   font-weight: 600;
-
+  text-align: center;
 }
 
 .instructions {
-  background: linear-gradient(10deg, #1C3738 55%,#8BAAAD); 
-  color: #DDDDDD;
+  color: #403F3F;
   padding: 15px;
+  background-color: #E5E5E1;
 }
 
 #entryForm {
@@ -65,9 +66,10 @@ float: left;
 }
 
 .navbar {
-  background-color: #333333;
+  background-color: #403F3F;
   width: 100%;
   border-radius: 0px;
+  color: #E5E5E1;
 }
 
 ul {
@@ -100,15 +102,14 @@ li a:hover {
 }
 
 .md-toolbar-tools{
-  background: linear-gradient(10deg, #8BAAAD 55%,#F4FFF8); 
+  background: linear-gradient(10deg, #403F3F 15%,#E5E5E1); 
 }
 
 .resourceDiv{
-  background-color: #F4FFF8;
-  border: solid;
-  margin: 5px;
+  background-color: #BFBEBC;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 15px;
   padding: 10px;
- 
   
 }
 
@@ -121,50 +122,46 @@ img {
   width: 200px;
 }
 
-.resourceDesc{
-  
-}
 
 #logout{
- background-color: #8BAAAD;
+ background-color: #403F3F;
+ color: #E5E5E1;
 }
 
 
 #newRBtn{
-  background-color: #8BAAAD;
+  background-color: #403F3F;
+  color: #E5E5E1;
+ }
+
+
+#infoBtn{
+  background-color: #403F3F;
+  color: #E5E5E1;
  }
 
 #userDetails{
-  background-color: #8BAAAD;
+  background-color: #403F3F;
+  color: #E5E5E1;
 }
 
 #removeBookmarkBtn{
-  background-color: #8BAAAD;
+  background-color: #403F3F;
+  color: #E5E5E1;
 }
 
 .bookmarked{
-  border: solid;
-  width: auto;
-  margin: 5px;
-  padding: 5px;
-  background-color: #F4FFF8;
+  background-color: #BFBEBC;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 15px;
+  padding: 10px;
+  
 }
 
-.userContainer{
-  background: linear-gradient(10deg, #8BAAAD 55%,#F4FFF8)
-}
-
-.infoContainer{
-  background: linear-gradient(10deg, #8BAAAD 55%,#F4FFF8)
-}
-
-.homeContainer{
-  background: linear-gradient(10deg, #8BAAAD 55%,#F4FFF8)
-}
 
 .searchBar{
   padding: 5px;
-  background-color: #8BAAAD;
+
 }
 
 #filterBar{
