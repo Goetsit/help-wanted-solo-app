@@ -167,7 +167,9 @@ img {
   height: 200px;
   width: 200px;
   float: left;
+  margin-right: 5px;
 }
+
 
 .searchBar{
   padding: 5px;
