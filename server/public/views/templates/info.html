@@ -18,7 +18,7 @@
         <div class="map">
                 
                       <ng-map center="{{resources.streetaddress}}, {{resources.city}} {{resources.state}}, {{resources.zip}}" zoom="{{map.zoom}}" id="mapTest">
-                              <marker position="{{resources.lat}},{{resources.long}}" title="Hello World!"></marker>
+                              <marker position="{{resources.streetaddress}}, {{resources.city}} {{resources.state}}, {{resources.zip}}" title="Hello World!"></marker>
                       </ng-map>
                   </div>
 
