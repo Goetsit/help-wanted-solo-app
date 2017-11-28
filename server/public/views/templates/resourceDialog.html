@@ -13,7 +13,12 @@
           <br>
           <h3>{{test.resourcename}}</h3> 
           {{test.streetaddress}}, {{test.city}} {{test.state}}, {{test.zip}}
-
+          <div class="map">
+              
+                    <ng-map center="{{test.lat}},{{test.long}}" zoom="{{map.zoom}}" id="mapTest">
+                            <marker position="{{test.lat}},{{test.long}}" title="Hello World!"></marker>
+                    </ng-map>
+                </div>
           <p>
             <strong>Contact:</strong>
             <ul>
@@ -29,9 +34,14 @@
               <li>Saturday: {{test.saturdayhours}}</li><br>
               <li>Sunday: {{test.sundayhours}}</li><br>
             </ul>
-          
+            {{test.lat}},{{test.long}}
+            
+
+              
         </div>
       </div>
+
+     
       </md-dialog-content>
 
       <md-dialog-actions layout="row">
