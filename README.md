@@ -1,26 +1,41 @@
-# Name of Project
+# Help Wanted
 
-One Paragraph of project description goes here. Link to the live version of the app if it's hosted on Heroku.
+This application was built for those in need.
+Help Wanted is an open source application centered around low-cost health care and services such as shelters and food shelves.
+Users are provided with a straight-frward and clean view of available resources in the Twin Cities, with potential to expand to more areas. Users are able to recommend and/or bookmark resources, filter the resources by their criteria, and view the location with maps.
 
 ## Built With
 
-List technologies and frameworks here
+Front-end:
 
-## Getting Started
+- AngularJS
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Server-side:
+
+- NodeJS
+- Express
+
+Database:
+
+- PostGreSQL
+
+Framework:
+
+- Angular Material
+
+APIs:
+
+- Google Places
+
 
 ### Prerequisites
 
 Link to software that is required to install the app (e.g. node).
 
 - [Node.js](https://nodejs.org/en/)
-- List other prerequisites here
-
+- npm install pg, body-parser, angular, angular-route
 
 ### Installing
-
-Steps to get the development environment running.
 
 ```sql
 
@@ -35,18 +50,19 @@ CREATE TABLE "locationstate" (
 CREATE TABLE "resources" (
 	"resourceid" serial NOT NULL,
 	"resourcename" varchar(500) NOT NULL,
-	"resourcestateid" int NOT NULL,
+	"resourcestateid" int ,
 	"description" varchar(500),
 	"imageurl" varchar(500),
-	"iswomens" BOOLEAN NOT NULL,
-	"ismental" BOOLEAN NOT NULL,
-	"isservice" BOOLEAN NOT NULL,
-	"isnational" BOOLEAN NOT NULL,
+	"iswomens" BOOLEAN ,
+	"ismental" BOOLEAN,
+	"isservice" BOOLEAN ,
+	"isnational" BOOLEAN ,
 	"phone" varchar(20),
 	"website" varchar(500),
-	"isapproved" BOOLEAN NOT NULL,
+	"isapproved" BOOLEAN,
 	"enteredbyuserid" int NOT NULL,
-	"dateentered" DATE NOT NULL,
+	"dateentered" DATE,
+	"recommendations" INT
 	CONSTRAINT resources_pk PRIMARY KEY ("resourceid")
 ) WITH (
   OIDS=FALSE
@@ -92,6 +108,7 @@ CREATE TABLE "usermaster" (
   OIDS=FALSE
 );
 CREATE TABLE "userbookmarked" (
+	"bookmarkit" SERIAL PRIMARY KEY,
 	"userid" int NOT NULL,
 	"resourceid" int NOT NULL
 ) WITH (
@@ -186,36 +203,33 @@ INSERT INTO "resources"(
 
 ```
 
-## Screen Shot
 
-Include one or two screen shots of your project here (optional). Remove if unused.
-
-## Documentation
-
-Link to a read-only version of your scope document or other relevant documentation here (optional). Remove if unused.
-
-### Completed Features
+### Features
 
 High level list of items completed.
 
-- [x] Feature a
-- [x] Feature b
+- [x] Google Places
+- [x] MD Dialog
+- [x] Users are able to add resources via the User Tab
+- [x] Users are able to bookmark resources and remove the bookmark
+- [x] Users are able to recommend resources
+- [x] Users are able to register and login/log out
+- [x] User detail dialog box available on user page
+- [x] Resources are able to be filtered
 
 ### Next Steps
 
 Features that you would like to add at some point in the future.
 
-- [ ] Feature c
+- [ ] A seperate tab for admins to see when a new resource has been added
+- [ ] Email notification to the admin when a resource has been added
 
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Authors
 
-* Name of author(s)
+* Laura A. Goetz
 
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
+* Hunter Rancourt for helping set up Google Places
