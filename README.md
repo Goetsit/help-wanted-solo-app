@@ -211,6 +211,11 @@ High level list of items completed.
 - [x] Google Places
 - [x] MD Dialog
 - [x] Users are able to add resources via the User Tab
+- [x] Users are able to bookmark resources and remove the bookmark
+- [x] Users are able to recommend resources
+- [x] Users are able to register and login/log out
+- [x] User detail dialog box available on user page
+- [x] Resources are able to be filtered
 
 ### Next Steps
 
