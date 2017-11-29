@@ -10,7 +10,6 @@ myApp.controller('InfoController', function ($http, UserService, $mdDialog, NgMa
   vm.getResources = function () {
     $http.get('/info').then(function (response) {
       vm.resources = response.data;
-   //   console.log(vm.resources.resourcename.getPlace(),'literally have no idea');
     }).catch(function (error) {
       console.log('Failure!', error);
     });
@@ -72,18 +71,20 @@ myApp.controller('InfoController', function ($http, UserService, $mdDialog, NgMa
     console.log(vm.resourceTest, 'US test');
     console.log(resource, 'resource on info controller');
     var resourceToSend = resource;
-    vm.resourceArr = UserService.getSingleResource(resourceToSend);
-    $mdDialog.show({
-      controller: 'InfoController as info',
-      templateUrl: 'views/templates/resourceDialog.html',
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose: true,
-      resolve: function () {
-        return UserService.resource;
+    UserService.getSingleResource(resourceToSend).then(function(){
+      $mdDialog.show({
+        controller: 'DialogController as info',
+        templateUrl: 'views/templates/resourceDialog.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose: true,
+        resolve: function () {
+          return UserService.resource;
+        }
       }
+      )
     }
-    )
+   )
   }
 
   vm.map = {

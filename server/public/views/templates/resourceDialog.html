@@ -1,46 +1,61 @@
-<md-dialog aria-label="Help Wanted">
+<md-dialog style="width:500px;" aria-label="Help Wanted">
   <!-- <div ng-controller="InfoController as info" > -->
-    <form ng-cloak>
-      <md-toolbar>
-        <div class="md-toolbar-tools">
-         {{info.resource}}
-        </div>
-      </md-toolbar>
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        {{info.resource}}
+      </div>
+    </md-toolbar>
 
-      <md-dialog-content>
-        <div class="md-dialog-content">
-          <div class = "resourceDialog" ng-repeat = "test in info.resourceTest.testArray">
+    <md-dialog-content>
+      <div flex class="md-dialog-content">
+        <div layout="column" class="resourceDialog">
           <br>
-          <h3>{{test.resourcename}}</h3> 
-          {{test.streetaddress}}, {{test.city}} {{test.state}}, {{test.zip}}
+          <h3>{{info.singleResource.data.resourcename}}</h3> {{info.singleResource.data.streetaddress}}, {{info.singleResource.data.city}} {{info.singleResource.data.state}}, {{info.singleResource.data.zip}}
           <p>
             <strong>Contact:</strong>
             <ul>
-              <li>Phone: {{test.phone}}</li><br>
+              <li>Phone: {{info.singleResource.data.phone}}</li>
+              <br>
             </ul>
-           <p><strong>Hours of Operation:</strong></p>
+            <p>
+              <strong>Hours of Operation:</strong>
+            </p>
             <ul>
-              <li>Monday: {{test.mondayhours}}</li><br>
-              <li>Tuesday: {{test.tuesdayhours}}</li><br>
-              <li>Wednesday: {{test.wednesdayhours}}</li><br>
-              <li>Thursday: {{test.thursdayhours}}</li><br>
-              <li>Friday: {{test.fridayhours}}</li><br>
-              <li>Saturday: {{test.saturdayhours}}</li><br>
-              <li>Sunday: {{test.sundayhours}}</li><br>
+              <li>Monday: {{info.singleResource.data.mondayhours}}</li>
+              <br>
+              <li>Tuesday: {{info.singleResource.data.tuesdayhours}}</li>
+              <br>
+              <li>Wednesday: {{info.singleResource.data.wednesdayhours}}</li>
+              <br>
+              <li>Thursday: {{info.singleResource.data.thursdayhours}}</li>
+              <br>
+              <li>Friday: {{info.singleResource.data.fridayhours}}</li>
+              <br>
+              <li>Saturday: {{info.singleResource.data.saturdayhours}}</li>
+              <br>
+              <li>Sunday: {{info.singleResource.data.sundayhours}}</li>
+              <br>
             </ul>
-            
-              
+
+            <div layout="row">
+              <ng-map flex center="[{{info.singleResource.data.lat}}, {{info.singleResource.data.long}}]" zoom="14" id="mapTest">
+                <marker position="[{{info.singleResource.data.lat}}, {{info.singleResource.data.long}}]"></marker>
+              </ng-map>
+            </div>
+
+
         </div>
       </div>
 
-     
-      </md-dialog-content>
 
-      <md-dialog-actions layout="row">
-        <span flex></span>
+    </md-dialog-content>
 
-      </md-dialog-actions>
-    </form>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+
+    </md-dialog-actions>
+  </form>
   <!-- </div> -->
- 
-</md-dialog>  
+
+</md-dialog>
